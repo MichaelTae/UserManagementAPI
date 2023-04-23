@@ -26,11 +26,8 @@ namespace UserManagementAPI.Controllers
         public async Task<ActionResult<IEnumerable<CompleteUserViewModel>>> GetUsers()
         {
             var users = await _context.Users.Include(x => x.Location).Include(x => x.UserInfo).ToListAsync();
-            var usersViewModel = new List<CompleteUserViewModel>();
 
-            foreach (var item in users)
-            {
-                var userModel = new CompleteUserViewModel
+            return users.Select(item => new CompleteUserViewModel
                 {
                     UserId = item.UserId,
                     Username = item.Username,
@@ -43,12 +40,8 @@ namespace UserManagementAPI.Controllers
                     Zipcode = item.Location?.Zipcode,
                     State = item.Location?.State,
                     Country = item.Location?.Country
-                };
-
-                usersViewModel.Add(userModel);
-            }
-
-            return usersViewModel;
+                })
+                .ToList();
         }
 
 
@@ -61,7 +54,7 @@ namespace UserManagementAPI.Controllers
 
             if (user == null)
             {
-                return NotFound("A user with that Id was not found");
+                return NotFound($"A user with id: {id} was not found");
             }
 
             return new CompleteUserViewModel
@@ -90,7 +83,7 @@ namespace UserManagementAPI.Controllers
 
             if (userEntity == null)
             {
-                return NotFound("A user with that Id was not found");
+                return NotFound($"A user with id: {id} was not found");
             }
 
             userEntity.Location ??= new LocationEntity();
@@ -118,10 +111,7 @@ namespace UserManagementAPI.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+               
             }
 
             return NoContent();
