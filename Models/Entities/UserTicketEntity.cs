@@ -17,5 +17,7 @@ namespace UserManagementAPI.Models.Entities
         public int TicketId { get; set; }
         [ForeignKey("TicketId")]
         public TicketEntity Ticket { get; set; }
+
+        public DateTime DateBooked { get; set; } = DateTime.Now;
     }
 }

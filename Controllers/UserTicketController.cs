@@ -27,7 +27,8 @@ namespace UserManagementAPI.Controllers
                 UserName = userTicketEntity.User.Username,
                 TicketName = userTicketEntity.Ticket.TicketName,
                 Location = userTicketEntity.Ticket.Location,
-                DateBooked = userTicketEntity.Ticket.DateBooked,
+                DateCreated = userTicketEntity.Ticket.DateCreated,
+                DateUpdated = userTicketEntity.Ticket.DateUpdated,
                 Price = userTicketEntity.Ticket.Price
             };
         }
