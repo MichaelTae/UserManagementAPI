@@ -22,10 +22,6 @@ namespace UserManagementAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TicketEntity>>> GetTickets()
         {
-            if (_context.Tickets == null)
-            {
-                return NotFound();
-            }
             return await _context.Tickets.ToListAsync();
 
         }
@@ -64,6 +60,7 @@ namespace UserManagementAPI.Controllers
                 updatedTicket.TicketName = model.TicketName;
                 updatedTicket.Location = model.Location;
                 updatedTicket.Price = model.Price;
+                updatedTicket.DateUpdated = DateTime.Now;
 
                 _context.Entry(updatedTicket).State = EntityState.Modified;
             }
@@ -95,7 +92,6 @@ namespace UserManagementAPI.Controllers
             {
                 TicketName = model.TicketName,
                 Location = model.Location,
-                DateBooked = model.DateBooked,
                 Price = model.Price
             };
 
@@ -110,7 +106,7 @@ namespace UserManagementAPI.Controllers
                     newTicket.TicketId,
                     newTicket.TicketName,
                     newTicket.Location,
-                    newTicket.DateBooked,
+                    newTicket.DateCreated,
                     newTicket.Price
                 )
             );

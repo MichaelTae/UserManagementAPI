@@ -11,7 +11,9 @@ namespace UserManagementAPI.Models.Entities
 
         public string Location { get; set; }
 
-        public DateTime DateBooked { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
+
+        public DateTime? DateUpdated { get; set; }
 
         public decimal Price { get; set; }
 
