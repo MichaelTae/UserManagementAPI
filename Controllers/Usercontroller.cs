@@ -22,6 +22,16 @@ namespace UserManagementAPI.Controllers
         }
 
         // GET: api/Users
+        /// <summary>
+        ///  Get all users
+        ///  1. Get all users from the database
+        ///  2. Return a list of complete user profiles
+        ///  3. If there are no users, return an empty list
+        ///  
+        ///   
+        /// </summary>
+        /// <returns> List of CompleteUserViewModel</returns>
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CompleteUserViewModel>>> GetUsers()
         {
@@ -47,6 +57,15 @@ namespace UserManagementAPI.Controllers
 
 
         // GET: api/Users/5
+
+        /// <summary>
+        /// Get a user by id
+        ///  1. Get the user from the database
+        ///  2. If the user does not exist, return a 404
+        ///  3. If the user exists, return the complete user profile
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>CompleteUserViewModel</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<CompleteUserViewModel>> GetUser(int id)
         {
@@ -76,6 +95,21 @@ namespace UserManagementAPI.Controllers
         }
 
         //PUT: api/Users/5
+
+        /// <summary>
+        ///   Updates a user's profile, if the user does not exist, it returns a 404.
+        /// 1.Get the user from the database
+        /// 2. If the user does not exist, return a 404
+        /// 3. If the user exists, update the user's profile
+        /// 4. Save the changes to the database
+        /// 5. Return a 204
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="user"></param>
+        /// <returns>
+        ///   NoContent();
+        /// </returns>
+
         [HttpPut("{id}")]
         public async Task<IActionResult> CompleteUserUpdate(int id, UpdateCompleteProfile user)
         {
@@ -119,6 +153,9 @@ namespace UserManagementAPI.Controllers
 
 
         // POST: api/Users
+
+
+
         [HttpPost]
         public async Task<ActionResult<UserIncompleteModel>> CreateUser(CreateUserModel user)
         {
