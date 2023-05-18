@@ -55,6 +55,18 @@ namespace UserManagementAPI.Controllers
 
 
         // GET: api/UserTicket/5
+
+        /// <summary>
+        ///  Get a user ticket by userId or ticketId
+        ///  1. Get a user ticket by userId or ticketId from the database
+        ///  2. Return a user ticket
+        ///  3. If there is no user ticket, return 404 Not Found
+        ///  
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="ticketId"></param>
+        /// <returns>UserTicketViewModel</returns>
+
         [HttpGet("/api/UserTicket/ByUserIdOrTicketId")]
         public async Task<ActionResult<UserTicketViewModel>> GetUserTicketEntities(
             [FromQuery(Name = "userId")] int? userId = null, [FromQuery(Name = "ticketId")] int? ticketId = null)
@@ -93,10 +105,20 @@ namespace UserManagementAPI.Controllers
         }
 
 
-        
+
 
         // POST: api/UserTicket
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        ///  A User ticket created by linking a user to a ticket, a user can have many tickets  and a ticket can have many users. 
+        ///  1. Create a user ticket
+        ///  2. Return a user ticket
+        ///  3. If the model is invalid, return 400 Bad Request
+        ///  4. If the user ticket already exists, return 409 Conflict
+        ///  5. If the user or ticket does not exist, return 404 Not Found
+        ///  
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns> CreateUserTicketEntity </returns>
         [HttpPost]
         public async Task<ActionResult<CreateUserTicketEntity>> PostUserTicketEntity(CreateUserTicketEntity model)
         {

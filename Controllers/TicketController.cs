@@ -45,7 +45,7 @@ namespace UserManagementAPI.Controllers
         }
 
         // PUT: api/Ticket/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTicketEntity(int id, UpdateTicketModel model)
         {
@@ -82,7 +82,7 @@ namespace UserManagementAPI.Controllers
         }
 
         // POST: api/Ticket
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
         public async Task<ActionResult<TicketEntity>> PostTicketEntity(CreateTicketModel model)
         {

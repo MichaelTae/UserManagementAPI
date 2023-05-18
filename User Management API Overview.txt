@@ -1,0 +1,177 @@
+﻿User Management API Overview
+
+
+## Getting Started
+
+The function of the API is to be able to do CRUD operations on users, tickets, as well as usertickets. Also being able to get Metrics regarding the users and tickets.
+
+### Built With
+ .NET 6.0. 
+Entity Framework Core 6.0.
+SQL Server 2019.
+Visual Studio 2022.
+
+### Prerequisites
+
+* .NET 6.0
+* Visual Studio 2022
+* SQL Server 2019
+
+### Installing
+
+1. Clone the repo
+   ```sh
+   git clone 
+
+```
+2. Open the solution in Visual Studio 2022
+3. Run the project
+
+
+## Usage
+
+### User
+
+#### Get All Users
+```sh
+GET /api/users
+```
+#### Get User by Id
+```sh
+GET /api/users/{id}
+```
+#### Create User
+```sh
+POST /api/users
+```
+#### Update User
+```sh
+PUT /api/users/{id}
+```
+#### Delete User
+```sh
+DELETE /api/users/{id}
+```
+
+### Ticket
+
+#### Get All Tickets
+```sh
+GET /api/ticket
+```
+#### Get Ticket by Id
+```sh
+GET /api/ticket/{id}
+```
+#### Create Ticket
+```sh
+POST /api/ticket
+```
+#### Update Ticket
+```sh
+PUT /api/ticket/{id}
+```
+#### Delete Ticket
+```sh
+DELETE /api/ticket/{id}
+```
+
+### UserTicket
+	
+#### Get All UserTickets
+```sh
+GET /api/userticket
+```
+#### Get UserTicket by Id or UserId
+```sh
+GET /api/userTicket/ByUserIdOrTicketId
+```
+#### Create UserTicket
+```sh
+POST /api/userticket
+```
+#### Delete UserTicket
+```sh
+DELETE /api/userticket/{id}
+```
+
+### Metrics
+
+#### Get User Metrics // Gets all users, tickets, and usertickets.
+```sh
+GET /api/metrics/users
+```
+#### Get Users Age
+```sh
+GET /api/metrics/users/age
+```
+#### Get Users Country
+```sh
+GET /api/metrics/users/country
+```
+#### Get Users Gender
+```sh
+GET /api/metrics/users/gender
+```
+#### Get Revenue per ticket
+```sh
+GET /api/metrics/tickets/revenue/perticket
+```
+#### Get Revenue per user
+```sh
+GET /api/metrics/tickets/revenue/peruser
+```
+#### Get Total Revenue
+```sh
+GET /api/metrics/tickets/revenue/total
+```
+
+
+
+
+## API overview
+
+
+ ### API Summary
+
+1. User is created with 3 parameters, Username,Email, and Password.
+2. User can be updated to complete profile with parameters: Firstname, Surname, Age, Gender, Address, Zipcode, State,Country. 
+3. A Ticket can be created with parameters: Ticketname, Location, DateCreated(when the ticket was created), Price.
+4. A UserTicket can be created with parameters: UserId,TicketId. This is the relationship between User and Ticket.
+5. The Metrics can be called to get the metrics of the users and tickets. These include but are not limited to: Revenue per ticket, Revenue per user, Users gender, Users age.
+
+### Flow of the API
+
+User + Ticket -> UserTicket
+
+User and Ticket are independent of each other, but UserTicket is dependent on both User and Ticket.
+
+UserTicket is the relationship between User and Ticket. It is the many to many relationship between the two. A user can have many tickets, and a ticket can have many users.
+
+1. Create a User
+ 1.1 Optional: Complete user profile.
+2. Create a Ticket
+3. Create a UserTicket with the UserId and TicketId
+4. Call the Metrics to get the metrics of the users and tickets.
+
+## Database
+
+The database is a SQL Server database. The database is created using Entity Framework Core. The database is created using code first approach
+
+
+
+
+
+
+
+## Contact
+
+Michael Stojanovic - (https://www.linkedin.com/in/michael-stojanovic-36a83821a)
+Github - ( https://github.com/MichaelTae)
+
+
+
+
+
+
+		
